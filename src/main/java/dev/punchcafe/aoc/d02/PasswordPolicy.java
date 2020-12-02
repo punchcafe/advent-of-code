@@ -6,7 +6,7 @@ import lombok.Getter;
 @Builder
 @Getter
 public class PasswordPolicy {
-    private char restrictedCharacter;
-    private int minAllowedInstances;
-    private int maxAllowedInstances;
+    private char character;
+    private int leftNumber;
+    private int rightNumber;
 }
