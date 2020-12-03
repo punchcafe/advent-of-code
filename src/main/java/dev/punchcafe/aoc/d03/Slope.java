@@ -20,8 +20,8 @@ public class Slope {
         final int width = allLines.get(0).length();
         final int height = allLines.size();
         final char[][] internalArray = new char[height][width];
-        for(int j = 0; j < height; j++){
-            for (int i = 0; i < width; i++){
+        for (int j = 0; j < height; j++) {
+            for (int i = 0; i < width; i++) {
                 internalArray[j][i] = allLines.get(j).charAt(i);
             }
         }

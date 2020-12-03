@@ -25,7 +25,7 @@ public class TreeDetector {
     public static long productOfNumberOfTreesForOriginAndSlopes(final Slope slope, final Vector origin, final Stream<Vector> gradients) {
         return gradients
                 .mapToLong(grad -> TreeDetector.numberOfTrees(slope, origin, grad))
-                .reduce((o,x) -> o*x)
+                .reduce((o, x) -> o * x)
                 .getAsLong();
     }
 }
