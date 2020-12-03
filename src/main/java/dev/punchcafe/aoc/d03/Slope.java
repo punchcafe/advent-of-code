@@ -2,9 +2,7 @@ package dev.punchcafe.aoc.d03;
 
 import static java.util.stream.Collectors.toList;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import lombok.AccessLevel;
@@ -30,11 +28,11 @@ public class Slope {
         return new Slope(internalArray, internalArray[0].length, internalArray.length);
     }
 
-    public boolean isTreeAt(final int x, final int y) {
-        if (y < 0 || y >= height) {
+    public boolean isTreeAt(final Vector position) {
+        if (position.getY() < 0 || position.getY() >= height) {
             throw new IndexOutOfBoundsException();
         }
-        return internalArray[y][adjustXCoordinate(x)] == '#';
+        return internalArray[position.getY()][adjustXCoordinate(position.getX())] == '#';
     }
 
     private int adjustXCoordinate(final int x) {

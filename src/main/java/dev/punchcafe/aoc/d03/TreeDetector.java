@@ -1,25 +1,31 @@
 package dev.punchcafe.aoc.d03;
 
+import java.util.stream.Stream;
+
 public class TreeDetector {
-    public static int numberOfTrees(final Slope slope, int[] startCord, int[] gradient){
-        if(startCord.length != 2 || gradient.length != 2){
-            throw new IllegalArgumentException();
-        }
-        if(gradient[1] == 0){
+
+    public static long numberOfTrees(final Slope slope, final Vector startCord, final Vector gradient) {
+        if (gradient.getY() == 0) {
             throw new IllegalArgumentException("WILL RUN FOREVER");
         }
-        int numberOfTrees = 0;
-        int[] currentCord = startCord;
-        try{
-            while (true){
-                if(slope.isTreeAt(currentCord[0], currentCord[1])){
+        long numberOfTrees = 0;
+        Vector currentCord = startCord;
+        try {
+            while (true) {
+                if (slope.isTreeAt(currentCord)) {
                     numberOfTrees++;
                 }
-                currentCord[0] += gradient[0];
-                currentCord[1] += gradient[1];
+                currentCord = currentCord.plus(gradient);
             }
-        } catch (IndexOutOfBoundsException ex){
+        } catch (IndexOutOfBoundsException ex) {
             return numberOfTrees;
         }
+    }
+
+    public static long productOfNumberOfTreesForOriginAndSlopes(final Slope slope, final Vector origin, final Stream<Vector> gradients) {
+        return gradients
+                .mapToLong(grad -> TreeDetector.numberOfTrees(slope, origin, grad))
+                .reduce((o,x) -> o*x)
+                .getAsLong();
     }
 }
