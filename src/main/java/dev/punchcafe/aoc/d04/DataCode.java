@@ -1,0 +1,9 @@
+package dev.punchcafe.aoc.d04;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+@Retention(RetentionPolicy.RUNTIME)
+public @interface DataCode {
+    String value();
+}
